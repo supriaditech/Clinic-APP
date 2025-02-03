@@ -8,6 +8,7 @@ import { imageClinic } from '@/data/dummyDataImageClinic';
 import { LoadingImage } from '../Layouts/LazyLoading/LoadingImage';
 import { LuMapPin } from 'react-icons/lu';
 import { FaStar } from 'react-icons/fa';
+import Link from 'next/link';
 
 function Searching() {
   const [showList, setShowList] = useState(false);
@@ -113,37 +114,42 @@ function Searching() {
                     (image) => image.id === dataClinic.id,
                   );
                   return (
-                    <div
-                      key={index}
-                      className="mt-4 p-2 flex gap-4 hover:bg-[#F3FFFD]"
+                    <Link
+                      href={`/clinic/${dataClinic.id}`} // Gantilah dengan path yang sesuai, di sini pakai ID
+                      passHref
                     >
-                      {clinicImage && (
-                        <LoadingImage
-                          src={clinicImage.imageUrl}
-                          alt={`Clinic Image ${index}`}
-                          width={300}
-                          height={200}
-                          className="w-[110px] h-[110px] aspect-auto"
-                        />
-                      )}
-                      <div className="flex flex-col w-full justify-between">
-                        <p className="text-xl text-[#4B5563] font-bold pb-3 border-b w-full">
-                          {dataClinic.name}
-                        </p>
-                        <div>
-                          <p className="font-semibold">{dataClinic.type}</p>
-                          <div className="flex text-[#4B5563] items-center gap-2 text-xs">
-                            <LuMapPin />
-                            <p>{dataClinic.address}</p>
-                          </div>
-                          <div className="flex items-center gap-2 text-xs text-[#4B5563]">
-                            <FaStar className="text-[#F9D800] w-5 h-5" />
-                            <p>{dataClinic.rating}</p>
-                            <p>{dataClinic.totalReviews} Reviews</p>
+                      <div
+                        key={index}
+                        className="mt-4 p-2 flex gap-4 hover:bg-[#F3FFFD]"
+                      >
+                        {clinicImage && (
+                          <LoadingImage
+                            src={clinicImage.imageUrl}
+                            alt={`Clinic Image ${index}`}
+                            width={300}
+                            height={200}
+                            className="w-[110px] h-[110px] aspect-auto"
+                          />
+                        )}
+                        <div className="flex flex-col w-full justify-between">
+                          <p className="text-xl text-[#4B5563] font-bold pb-3 border-b w-full">
+                            {dataClinic.name}
+                          </p>
+                          <div>
+                            <p className="font-semibold">{dataClinic.type}</p>
+                            <div className="flex text-[#4B5563] items-center gap-2 text-xs">
+                              <LuMapPin />
+                              <p>{dataClinic.address}</p>
+                            </div>
+                            <div className="flex items-center gap-2 text-xs text-[#4B5563]">
+                              <FaStar className="text-[#F9D800] w-5 h-5" />
+                              <p>{dataClinic.rating}</p>
+                              <p>{dataClinic.totalReviews} Reviews</p>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

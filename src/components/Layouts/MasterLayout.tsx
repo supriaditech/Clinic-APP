@@ -11,7 +11,7 @@ function MasterLayout({ children, title }: MasterLayoutProps) {
   return (
     <>
       <Head>
-        <title>{}</title>
+        <title>{title}</title>
       </Head>
       <div className="relative flex flex-col min-h-screen">
         <Navbar />
