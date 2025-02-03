@@ -27,15 +27,17 @@ function Promo() {
       <h1 className="text-4xl text-center font-bold text-[#383A3A]">
         Promo <span className="text-[#357A7B]">Menarik</span>
       </h1>
-      <div className="flex overflow-x-scroll gap-8 mt-16 scrollbar-hide">
+      <div className="flex overflow-x-scroll gap-8 mt-16 scrollbar-hide px-4 sm:px-0">
         {data.map((card) => (
           <div
             key={card.id}
-            className="bg-cover bg-center w-[800px] h-60 rounded-lg"
+            className="bg-cover bg-center w-[300px] sm:w-[800px] h-60 rounded-lg"
             style={{ backgroundImage: `url(${card.image})` }}
           >
-            <div className=" bottom-0 left-0 p-6 bg-black bg-opacity-50 text-white h-60 rounded-lg w-[800px]">
-              <h2 className="text-4xl font-bold w-1/2">{card.title}</h2>
+            <div className=" bottom-0 left-0 p-6 bg-black bg-opacity-50 text-white h-60 rounded-lg w-[300px] sm:w-[800px]">
+              <h2 className="text-lg sm:text-4xl font-bold w-1/2">
+                {card.title}
+              </h2>
               <p className="mt-2">{card.description}</p>
             </div>
           </div>

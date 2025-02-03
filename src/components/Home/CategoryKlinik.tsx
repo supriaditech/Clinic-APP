@@ -29,7 +29,7 @@ function CategoryKlinik() {
       <h1 className="text-4xl text-center font-bold text-[#383A3A]">
         Kategori <span className="text-[#357A7B]">Klinik</span>
       </h1>
-      <div className="flex justify-center items-center mt-16 gap-8">
+      <div className="flex justify-center flex-wrap items-center mt-16 gap-8">
         {dataCategory?.map((category: CategoryType, index: number) => (
           <div key={category.id} className="flex flex-col gap-2 items-center">
             <div className="bg-[#D6F2F2] rounded-full flex justify-center items-center">

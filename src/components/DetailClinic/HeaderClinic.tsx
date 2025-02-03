@@ -13,7 +13,7 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
   const [selectedKey, setSelectedKey] = useState<string>('InfoUmum');
 
   return (
-    <div className="relative w-full bg-[#F3FFFD] pt-10 pb-10 rounded-[80px] rounded-br-[80px]">
+    <div className="relative w-full bg-[#F3FFFD] pt-0 sm:pt-10 pb-10  rounded-b-[40px] sm:rounded-b-[80px]">
       <div className="container relative z-20 mx-auto px-10 2xl:px-0">
         <div className="flex flex-row items-center gap-2">
           <Link href={'/'}>Beranda</Link> <p> - </p>
@@ -22,8 +22,8 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
             {clinicData.name}
           </Link>
         </div>
-        <div className="grid grid-cols-3 mt-10 gap-6">
-          <div className="col-span-1 rounded-lg">
+        <div className="sm:grid grid-cols-3 mt-10 gap-6">
+          <div className="w-full sm:col-span-1 rounded-lg ">
             <LoadingImage
               src={image[0].imageUrl}
               width={200}
@@ -32,7 +32,7 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
               className="w-full h-[410px] rounded-xl object-cover"
             />
           </div>
-          <div className="col-span-2 grid grid-cols-3 gap-6">
+          <div className="hidden col-span-2 sm:grid grid-cols-3 gap-6">
             {image.map((item) => (
               <div key={item.id} className="rounded-lg ">
                 <LoadingImage
@@ -58,6 +58,7 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
             tab: 'border-b-2 text-[#4B5563] hover:border-[#2AA996] hover:text-[#2AA996] focus:outline-none',
             tabList: '',
             panel: '',
+            base: 'flex wrap',
           }}
         >
           <Tab
@@ -106,7 +107,7 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
         <p className="text-3xl mt-10 font-bold text-[#1E1E1E]">
           {clinicData.name}
         </p>
-        <div className="flex justify-between items-start mt-6">
+        <div className="sm:flex justify-between items-start mt-6">
           <div className="flex flex-col gap-1">
             <p className="font-semibold">{clinicData.type}</p>
             <div className="flex text-[#4B5563] items-center gap-2 text-xs">
@@ -119,7 +120,7 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
               <p>{clinicData.totalReviews} Reviews</p>
             </div>
           </div>
-          <Button className="bg-[#357A7B] text-white font-bold">
+          <Button className="mt-2 sm:mt-0 bg-[#357A7B] text-white font-bold">
             Book Appointment
           </Button>
         </div>

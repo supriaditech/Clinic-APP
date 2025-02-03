@@ -13,7 +13,7 @@ function Fasilitas({ clinicData }: ClinicDetailProps) {
   return (
     <div className="container relative z-20 mx-auto px-10 2xl:px-0 mb-10">
       <p className="text-2xl font-bold">Fasilitas</p>
-      <div className="mt-8 grid grid-cols-2 gap-10 py-2 px-4 w-[400px]">
+      <div className="mt-8 grid grid-cols-2 gap-10 py-2 px-4 w-full  sm:w-[400px]">
         {clinicData.facilities.map((facility) => (
           <div key={facility.name} className="flex items-center gap-2 text-lg">
             {iconMap[facility.name] || <span className="w-6 h-6">❓</span>}{' '}

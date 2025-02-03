@@ -17,7 +17,7 @@ const ClinicDetail = ({ clinicData }: ClinicDetailProps) => {
 
   return (
     <MasterLayout title="Detail Clinic- Clinic">
-      <div className="min-h-screen pb-10">
+      <div className="min-h-screen pb-0 sm:pb-10">
         <HeaderClinic clinicData={clinicData} />
         <Spesialis clinicData={clinicData} />
         <Fasilitas clinicData={clinicData} />

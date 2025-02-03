@@ -62,15 +62,15 @@ function Searching() {
   }, []);
 
   return (
-    <div className="w-full -bottom-24 absolute z-20">
-      <div className="container mx-auto bg-white border border-[#2AA996] py-8 px-10 rounded-md shadow-lg relative z-30">
-        <p className="text-2xl text-[#357A7B] font-bold mb-4">
+    <div className="w-full -bottom-24 absolute z-20 px-4 sm:px-0">
+      <div className="container mx-auto  bg-white border border-[#2AA996] py-8 px-2 sm:px-10 rounded-md shadow-lg relative z-30">
+        <p className="text-lg sm:text-2xl text-[#357A7B] font-bold mb-4">
           Cari Klinik Pilihan Anda
         </p>
-        <div className="relative rounded-md border border-gray-300 bg-white flex flex-row gap-2 items-center p-4 z-10">
+        <div className="relative rounded-md border border-gray-300 bg-white flex flex-row gap-2 items-center p-2 sm:p-4 z-10 ">
           <IoSearch className="text-2xl text-default-400 w-8 h-8" />
           <input
-            ref={inputRef} // Tambahkan ref ke input
+            ref={inputRef}
             onClick={handleClikkSearch}
             placeholder="Cari klinik"
             type="text"
@@ -90,7 +90,7 @@ function Searching() {
                 Hasil untuk{' '}
                 {searchQuery !== '' ? ' "' + searchQuery + '"' : null}
               </p>
-              <div className="flex items-center gap-4 mt-4">
+              <div className="flex items-center gap-4 mt-4 overflow-x-auto scrollbar-hide">
                 {dataCategory?.map((item) => (
                   <button
                     key={item.id}
@@ -132,16 +132,18 @@ function Searching() {
                           />
                         )}
                         <div className="flex flex-col w-full justify-between">
-                          <p className="text-xl text-[#4B5563] font-bold pb-3 border-b w-full">
+                          <p className="text-md sm:text-xl text-[#4B5563] font-bold pb-3 border-b w-full">
                             {dataClinic.name}
                           </p>
                           <div>
-                            <p className="font-semibold">{dataClinic.type}</p>
-                            <div className="flex text-[#4B5563] items-center gap-2 text-xs">
-                              <LuMapPin />
+                            <p className="text-sm sm:text-md font-semibold">
+                              {dataClinic.type}
+                            </p>
+                            <div className="flex text-[#4B5563] items-center gap-2 text-[10px] sm:text-xs mt-1">
+                              <LuMapPin className=" w-5 h-5" />
                               <p>{dataClinic.address}</p>
                             </div>
-                            <div className="flex items-center gap-2 text-xs text-[#4B5563]">
+                            <div className="flex items-center gap-2  text-[10px] sm:text-xs text-[#4B5563] mt-1">
                               <FaStar className="text-[#F9D800] w-5 h-5" />
                               <p>{dataClinic.rating}</p>
                               <p>{dataClinic.totalReviews} Reviews</p>

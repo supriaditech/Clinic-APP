@@ -51,7 +51,6 @@ class Api {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error('API call error:', error);
       return {
         meta: {
           code: 400,

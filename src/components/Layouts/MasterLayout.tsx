@@ -15,7 +15,9 @@ function MasterLayout({ children, title }: MasterLayoutProps) {
       </Head>
       <div className="relative flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow w-full mx-auto mt-20 ">{children}</main>
+        <main className="flex-grow w-full mx-auto mt-16 sm:mt-20 ">
+          {children}
+        </main>
       </div>
     </>
   );

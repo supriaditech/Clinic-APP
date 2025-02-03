@@ -9,9 +9,9 @@ import { div } from 'framer-motion/client';
 function HeaderComponent() {
   return (
     <div className="relative w-full bg-[#F3FFFD] pt-10 py-32  ">
-      <div className="container relative z-20 mx-auto xl:grid grid-cols-2 gap-12 px-10 2xl:px-0">
+      <div className="w-full sm:container relative z-20 mx-auto xl:grid grid-cols-2 gap-12 px-10 2xl:px-0">
         <div className="w-full flex flex-col gap-10 py-10 ">
-          <h1 className="text-7xl font-bold text-[#383A3A]">
+          <h1 className="text-4xl sm:text-7xl font-bold text-[#383A3A]">
             <span className="text-[#357A7B]"> Partner Kepercayaan</span> Anda
             dalam Mencari Klinik Kesehatan
           </h1>
@@ -22,14 +22,14 @@ function HeaderComponent() {
             purus eu quam mollis, ut iaculis quam cursus. Proin semper odio eu
             mauris rhoncus, et finibus diam pellentesque.
           </p>
-          <button className="bg-gradient-to-tr from-[#2AA996] to-[#357A7B] py-3 px-10 flex justify-center items-center text-white shadow-lg rounded-md w-[400px]">
+          <button className="bg-gradient-to-tr from-[#2AA996] to-[#357A7B] py-3 px-10 flex justify-center items-center text-white shadow-lg rounded-md w-full sm:w-[400px]">
             <p className="text-xl font-bold">Book an appointment</p>
             <IoIosArrowForward className="text-2xl font-extrabold w-7 h-full" />
           </button>
         </div>
 
         {/* Responsive Background Image */}
-        <div className="bg-[url('/image/home/imageHeder.png')] bg-no-repeat bg-cover bg-center w-full h-auto sm:h-[600px] relative z-10 ">
+        <div className="hidden sm:relative bg-[url('/image/home/imageHeder.png')] bg-no-repeat bg-cover bg-center w-full h-auto sm:h-[600px]  z-10 ">
           <div className="bg-white shadow-lg absolute py-4 px-6 bottom-40 -right-4 2xl:-right-12 rounded-md">
             <div className="flex gap-2 justify-center items-center ">
               <div className=" flex -space-x-2">
