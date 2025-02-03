@@ -29,7 +29,7 @@ function HeaderComponent() {
         </div>
 
         {/* Responsive Background Image */}
-        <div className="hidden sm:relative bg-[url('/image/home/imageHeder.png')] bg-no-repeat bg-cover bg-center w-full h-auto sm:h-[600px]  z-10 ">
+        <div className="hidden sm:flex flex-col relative bg-[url('/image/home/imageHeder.png')] bg-no-repeat bg-cover bg-center w-full h-auto sm:h-[600px]  z-10 ">
           <div className="bg-white shadow-lg absolute py-4 px-6 bottom-40 -right-4 2xl:-right-12 rounded-md">
             <div className="flex gap-2 justify-center items-center ">
               <div className=" flex -space-x-2">
