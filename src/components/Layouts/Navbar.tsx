@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { LoadingImage } from './LazyLoading/LoadingImage';
 import { useRouter } from 'next/router';
+import { div } from 'framer-motion/client';
 
 interface TabItem {
   nama: string;
   slug: string;
 }
 
-const Navbar = () => {
+interface navbarProps {
+  navbarShow: boolean;
+}
+const Navbar = ({ navbarShow }: navbarProps) => {
   const router = useRouter();
   const tabs = [
     {
@@ -53,23 +57,27 @@ const Navbar = () => {
 
         {/* Desktop Navbar */}
         <div className="hidden sm:flex flex-row justify-between items-center w-full">
-          <ul className="flex space-x-2 lg:space-x-8 w-full justify-center">
-            {tabs.map((item: TabItem, index: number) => (
-              <li
-                key={index}
-                className={`${
-                  router.pathname === `/${item.slug}` ? 'text-green-600' : ''
-                }`}
-              >
-                <Link
-                  href={`/${item.slug}`}
-                  className="hover:text-green-600 text-sm lg:text-md font-bold"
+          {navbarShow ? (
+            <ul className="flex space-x-2 lg:space-x-8 w-full justify-center">
+              {tabs.map((item: TabItem, index: number) => (
+                <li
+                  key={index}
+                  className={`${
+                    router.pathname === `/${item.slug}` ? 'text-green-600' : ''
+                  }`}
                 >
-                  {item.nama}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  <Link
+                    href={`/${item.slug}`}
+                    className="hover:text-green-600 text-sm lg:text-md font-bold"
+                  >
+                    {item.nama}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div />
+          )}
           <div className="px-6 py-1 bg-[radial-gradient(circle,_#F3FFFD,_#eef5eb)] rounded-[2vw]">
             <LoadingImage
               src="/image/photoProfile.png"

@@ -1,5 +1,5 @@
 import useCategory from '@/hooks/useCategory';
-import useClinic from '@/hooks/uuseClinic';
+import useClinic from '@/hooks/useClinic';
 import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
 import { IoSearch } from 'react-icons/io5';
@@ -9,6 +9,7 @@ import { LoadingImage } from '../Layouts/LazyLoading/LoadingImage';
 import { LuMapPin } from 'react-icons/lu';
 import { FaStar } from 'react-icons/fa';
 import Link from 'next/link';
+import { div } from 'framer-motion/client';
 
 function Searching() {
   const [showList, setShowList] = useState(false);
@@ -17,7 +18,6 @@ function Searching() {
   const [selectedCategory, setSelectedCategory] = useState<string>(''); // State to store selected category
   const { listClinic, errorListClinic, isLoadingListClinic, setGetData } =
     useClinic(searchQuery);
-
   const inputRef = useRef<HTMLInputElement>(null); // Ref untuk input field
   const listRef = useRef<HTMLDivElement>(null); // Ref untuk list yang berisi hasil pencarian
 
@@ -25,21 +25,27 @@ function Searching() {
     setShowList(true);
     setGetData(true);
   };
-
+  if (errorListClinic) {
+    return <div>sadfasdas</div>;
+  }
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category); // Set the selected category
   };
 
   // Filter listClinic based on selected category
-  const filteredClinics = listClinic?.filter((clinic) => {
-    // If "Semua" is selected, show all clinics
-    if (selectedCategory === 'Semua') {
-      return true;
-    }
+  const filteredClinics = Array.isArray(listClinic)
+    ? listClinic.filter((clinic) => {
+        // If "Semua" is selected, show all clinics
+        if (selectedCategory === 'Semua') {
+          return true;
+        }
 
-    // Filter by selected category
-    return clinic.type.toLowerCase().includes(selectedCategory.toLowerCase());
-  });
+        // Filter by selected category
+        return clinic.type
+          .toLowerCase()
+          .includes(selectedCategory.toLowerCase());
+      })
+    : [];
 
   // Close the list when clicking outside
   useEffect(() => {

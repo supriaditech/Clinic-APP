@@ -7,7 +7,7 @@ class Api {
   public token: string = '';
   public header: any = {};
   public body: any = {}; // This should not be used in GET requests
-  public method: string | undefined;
+  public method: 'GET' | 'POST' | 'PUT' | 'DELETE' | undefined;
 
   public call = async () => {
     const url = ApiUrl + this.url;
@@ -15,20 +15,20 @@ class Api {
       ...this.header,
     };
 
-    // Hanya set Content-Type jika bukan multipart/form-data
+    // Set Content-Type based on the type, except for multipart/form-data
     if (this.type === 'json') {
       headers['Content-Type'] = 'application/json';
     } else if (this.type === 'form') {
       headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
 
-    // Tambahkan Authorization jika dibutuhkan
+    // Add Authorization header if needed
     if (this.auth && this.token) {
       headers['Authorization'] = 'Bearer ' + this.token;
       headers['Accept'] = 'application/json';
     }
 
-    // Set body hanya jika method bukan GET
+    // Prepare body for non-GET methods (POST, PUT, DELETE)
     let body: BodyInit | undefined;
     if (this.method !== 'GET') {
       if (this.type === 'json') {
@@ -36,14 +36,14 @@ class Api {
       } else if (this.type === 'form') {
         body = new URLSearchParams(this.body).toString();
       } else {
-        body = this.body; // Jika tipe multipart, body sudah berbentuk FormData
+        body = this.body; // For multipart, assume body is already a FormData object
       }
     }
 
     const options: RequestInit = {
-      method: this.method || 'GET', // Pastikan method adalah 'GET' jika belum di-set
+      method: this.method || 'GET', // Default to GET if no method is set
       headers: headers,
-      body: body, // Hanya kirim body jika tidak GET
+      body: body, // Only include body if method is not GET
     };
 
     try {

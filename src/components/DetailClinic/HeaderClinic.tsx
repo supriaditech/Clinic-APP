@@ -6,11 +6,27 @@ import { imageDetailClinic } from '@/data/dummyDetailImage';
 import { Button, Tab, Tabs } from '@heroui/react';
 import { LuMapPin } from 'react-icons/lu';
 import { FaStar } from 'react-icons/fa';
+import { useRouter } from 'next/router';
+import { SecretKey } from '../../../config/config';
+import CryptoJS from 'crypto-js';
 
-function HeaderClinic({ clinicData }: ClinicDetailProps) {
+const HeaderClinic = ({ clinicData }: ClinicDetailProps) => {
   const image = imageDetailClinic;
-
+  const route = useRouter();
   const [selectedKey, setSelectedKey] = useState<string>('InfoUmum');
+  const handleClickBooking = (item: any) => {
+    // Enkripsi item
+    const encryptedItem = CryptoJS.AES.encrypt(
+      JSON.stringify(item),
+      SecretKey,
+    ).toString();
+
+    // Kirimkan item yang sudah terenkripsi ke halaman booking
+    route.push({
+      pathname: '/booking',
+      query: { data: encryptedItem },
+    });
+  };
 
   return (
     <div className="relative w-full bg-[#F3FFFD] pt-0 sm:pt-10 pb-10  rounded-b-[40px] sm:rounded-b-[80px]">
@@ -120,13 +136,16 @@ function HeaderClinic({ clinicData }: ClinicDetailProps) {
               <p>{clinicData.totalReviews} Reviews</p>
             </div>
           </div>
-          <Button className="mt-2 sm:mt-0 bg-[#357A7B] text-white font-bold">
+          <Button
+            className="mt-2 sm:mt-0 bg-[#357A7B] text-white font-bold"
+            onPress={() => handleClickBooking(clinicData)}
+          >
             Book Appointment
           </Button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default HeaderClinic;
