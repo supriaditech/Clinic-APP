@@ -9,7 +9,7 @@ const useBooking = () => {
     // Menghasilkan slug dari nama
     const api = new Api();
     api.url = '/api/bookings';
-    api.type = 'multipart';
+    api.type = 'json';
     api.body = {
       NamaLengkap: data.NamaLengkap,
       NoHp: data.NoHp,
